@@ -1,9 +1,9 @@
-FROM persapiens/maven-oraclejdk:3.3.9-8u121
+FROM persapiens/maven-oraclejdk:3.5.0-8u121
 MAINTAINER Marcelo Fernandes <persapiens@gmail.com>
 
 # update and upgrade
 RUN apt-get update -qqy && \
-    apt-get upgrade -qqy --no-install-recommends 
+    apt-get upgrade -qqy --no-install-recommends
 
 # install headless gui tools
 RUN apt-get install -qqy xvfb dbus-x11 fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
@@ -22,9 +22,8 @@ RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
 # ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 # clean temporary files
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/* 
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/*
 
 # create chromium folders
 RUN mkdir /.config /.cache /.local /.gnome /.pki && \
     chmod 777 /.config /.cache /.local /.gnome /.pki
-
